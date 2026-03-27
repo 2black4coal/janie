@@ -233,15 +233,111 @@
   margin-top: 40px;
 }
 
-/* ==========================
-   RESPONSIVE
-========================== */
-@media (max-width: 600px) {
+/* ============================================================
+   MOBILE — PREMIUM UPDATE (APPLYING YOUR STANDARD)
+   Bigger text, premium white glow, larger icons
+   PHONE ONLY — DOES NOT AFFECT LAPTOP OR IPAD
+============================================================ */
+@media (max-width: 768px) {
+
+  /* ============================================
+     1. GLOBAL TEXT — YOUR PREMIUM WHITE + GLOW
+     (same as Services page)
+  ============================================ */
+  .confirm-page,
+  .confirm-card,
+  .confirm-title,
+  .confirm-desc,
+  .confirm-form,
+  .confirm-input,
+  .confirm-no-service,
+  span,
+  p,
+  h1, h2, h3, h4, h5, h6 {
+    color: #fff !important;
+    mix-blend-mode: difference !important;
+    text-shadow:
+      0 1px 0 rgba(0,0,0,0.9),
+      0 2px 2px rgba(0,0,0,0.6),
+      0 0 3px rgba(0,0,0,0.4),
+      0 -1px 1px rgba(255,255,255,0.2),
+      0 0 2px rgba(255,255,255,0.1) !important;
+  }
+
+  /* ============================================
+     2. BASE FONT SIZE — MATCH SERVICES PAGE
+     (bigger, elegant, readable)
+  ============================================ */
+  .confirm-page {
+    font-size: 1.45rem !important;
+    line-height: 1.85 !important;
+  }
+
+  .confirm-title {
+    font-size: 2.4rem !important;
+  }
+
+  .confirm-desc {
+    font-size: 1.45rem !important;
+  }
+
+  /* ============================================
+     3. ICONS — INCREASED SIZE (your request)
+     Diamond, Arrow, Calendar Icon
+  ============================================ */
   .confirm-icon {
-    font-size: 1.4rem;
+    font-size: 2.4rem !important;
+    -webkit-text-stroke: 0.4px rgba(255,245,220,0.95) !important;
+  }
+
+  .confirm-diamond {
+    font-size: 3rem !important;
+  }
+
+  .confirm-arrow {
+    font-size: 2.6rem !important;
+    letter-spacing: -1px;
   }
 
   .confirm-picker-icon {
-    font-size: 0.9rem;
+    font-size: 2.4rem !important;
+  }
+
+  /* ============================================
+     4. BUTTONS — APPLY SAME PREMIUM WHITE + GLOW
+     (matches Services page)
+  ============================================ */
+  .confirm-btn {
+    color: #fff !important;
+    mix-blend-mode: difference !important;
+    text-shadow:
+      0 1px 0 rgba(0,0,0,0.9),
+      0 2px 2px rgba(0,0,0,0.6),
+      0 0 3px rgba(0,0,0,0.4),
+      0 -1px 1px rgba(255,255,255,0.2),
+      0 0 2px rgba(255,255,255,0.1) !important;
+  }
+
+  /* ============================================
+     5. PICKER — KEEP CENTERED, CLEAN, PREMIUM
+  ============================================ */
+  .confirm-input {
+    height: 60px !important;
+  }
+
+  .confirm-picker-wrap {
+    margin-top: 10px !important;
+  }
+
+  /* ============================================
+     6. CARD SPACING — MORE BREATHING ROOM
+  ============================================ */
+  .confirm-card {
+    gap: 22px !important;
+    padding: 0 14px !important;
+  }
+
+  .confirm-form {
+    gap: 18px !important;
   }
 }
