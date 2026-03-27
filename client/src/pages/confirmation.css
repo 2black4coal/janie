@@ -234,15 +234,14 @@
 }
 
 /* ============================================================
-   MOBILE — PREMIUM UPDATE (APPLYING YOUR STANDARD)
-   Bigger text, premium white glow, larger icons
+   MOBILE — FULL PREMIUM SYSTEM (FINAL)
+   Glow, Bigger Text, Bigger Icons, Underlay, Centering, No Flip
    PHONE ONLY — DOES NOT AFFECT LAPTOP OR IPAD
 ============================================================ */
 @media (max-width: 768px) {
 
   /* ============================================
-     1. GLOBAL TEXT — YOUR PREMIUM WHITE + GLOW
-     (same as Services page)
+     1. GLOBAL TEXT — PREMIUM WHITE + GLOW
   ============================================ */
   .confirm-page,
   .confirm-card,
@@ -265,8 +264,7 @@
   }
 
   /* ============================================
-     2. BASE FONT SIZE — MATCH SERVICES PAGE
-     (bigger, elegant, readable)
+     2. BASE FONT SIZE — BIGGER, ELEGANT
   ============================================ */
   .confirm-page {
     font-size: 1.45rem !important;
@@ -278,12 +276,11 @@
   }
 
   .confirm-desc {
-    font-size: 1.45rem !important;
+    font-size: 1.7rem !important;
   }
 
   /* ============================================
-     3. ICONS — INCREASED SIZE (your request)
-     Diamond, Arrow, Calendar Icon
+     3. ICONS — BIGGER + GOLD STROKE
   ============================================ */
   .confirm-icon {
     font-size: 2.4rem !important;
@@ -304,8 +301,7 @@
   }
 
   /* ============================================
-     4. BUTTONS — APPLY SAME PREMIUM WHITE + GLOW
-     (matches Services page)
+     4. BUTTONS — PREMIUM WHITE + GLOW
   ============================================ */
   .confirm-btn {
     color: #fff !important;
@@ -319,7 +315,7 @@
   }
 
   /* ============================================
-     5. PICKER — KEEP CENTERED, CLEAN, PREMIUM
+     5. PICKER — CLEAN + CENTERED
   ============================================ */
   .confirm-input {
     height: 60px !important;
@@ -339,5 +335,56 @@
 
   .confirm-form {
     gap: 18px !important;
+  }
+
+  /* ============================================
+     7. UNDERLAY — SOFT DARK LAYER FOR CLARITY
+  ============================================ */
+  .confirm-page {
+    position: relative;
+  }
+
+  .confirm-page::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.25); /* soft premium underlay */
+    z-index: 0;
+  }
+
+  /* keep content above underlay */
+  .confirm-card,
+  .confirm-title,
+  .confirm-desc,
+  .confirm-form,
+  .confirm-picker-wrap,
+  .confirm-actions,
+  .confirm-back-wrap {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ============================================
+     8. STOP BACKGROUND FLIPPING ON PHONE
+  ============================================ */
+  .confirm-page {
+    background-attachment: scroll !important;
+  }
+
+  /* ============================================
+     9. PERFECT VERTICAL CENTERING
+  ============================================ */
+  .confirm-page {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 0 !important;
+    min-height: 100vh !important;
+  }
+
+  /* ensure card stays centered */
+  .confirm-card {
+    position: relative;
+    z-index: 2;
   }
 }
