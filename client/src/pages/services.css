@@ -1,5 +1,5 @@
 /* ==========================
-   SERVICES PAGE — SMART TEXT + GLOW FALLBACK
+   SERVICES PAGE — BASE DESKTOP
 ========================== */
 .services-page {
   min-height: 100vh;
@@ -26,16 +26,12 @@
   text-align: center;
   margin-bottom: 40px;
   color: #fff;
-
-  /* Smart layered shadows for any background */
   text-shadow:
     0 1px 0 rgba(0,0,0,0.9),
     0 2px 2px rgba(0,0,0,0.6),
     0 0 3px rgba(0,0,0,0.4),
     0 -1px 1px rgba(255,255,255,0.2),
     0 0 2px rgba(255,255,255,0.1);
-
-  /* Adaptive contrast */
   mix-blend-mode: difference;
 }
 
@@ -58,7 +54,7 @@
   border-radius: 8px;
   cursor: pointer;
   transition: transform 0.3s ease, filter 0.3s ease;
-  background: transparent; /* no overlay */
+  background: transparent;
 }
 
 .service-card:hover {
@@ -76,7 +72,7 @@
   filter: brightness(0.95);
 }
 
-/* TEXT — AUTO CONTRAST + GLOW FALLBACK */
+/* TEXT */
 .service-card-title,
 .service-desc,
 .service-price {
@@ -85,73 +81,27 @@
   margin: 6px 0;
   font-family: 'Lucida Handwriting', cursive;
   color: #fff;
-
-  /* Adaptive contrast */
   mix-blend-mode: difference;
-
-  /* Glow fallback for browsers without mix-blend-mode */
   text-shadow:
     0 1px 2px rgba(0,0,0,0.9),
     0 2px 4px rgba(0,0,0,0.6),
     0 0 3px rgba(0,0,0,0.4),
     0 0 4px rgba(255,255,255,0.3);
 }
-/* ==========================
-   BOOK NOW BUTTON — COMPACT & ELEGANT
-========================== */
-.service-book-btn {
-  margin-top: 6px;
-  padding: 4px 10px 100px;            /* 🔹 compact padding */
-  background: rgba(255, 255, 255, 0.05);  /* subtle transparent base */
-  border: 1px solid #fff;
-  border-radius: 4px;            /* 🔹 slightly smaller radius for sleek look */
-  font-family: 'Lucida Handwriting', cursive;
-  font-size: 0.85rem;            /* 🔹 slightly smaller text */
-  font-weight: 200;
-  cursor: pointer;
-  color: #fff;
-  text-align: center;
 
-  /* Smart contrast */
-  mix-blend-mode: difference;
-  text-shadow:
-    0 1px 1px rgba(0,0,0,0.8),
-    0 0 2px rgba(255,255,255,0.2);
-
-  transition: transform 0.2s ease, opacity 0.2s ease, background 0.2s ease;
-}
-
-.service-book-btn:hover {
-  transform: translateY(-1px);
-  opacity: 0.9;
-  background: rgba(255, 255, 255, 0.1); /* subtle hover effect */
-}
-
-/* RESPONSIVE BUTTON TEXT */
-@media (max-width: 600px) {
-  .service-book-btn {
-    font-size: 0.8rem;            /* slightly smaller on mobile */
-    padding: 3px 8px;
-  }
-}
-
-
-
-/* ==========================
-   INTERACTIVE ELEMENTS — UNIFIED GLOW
-========================== */
-
-/* BOOK NOW BUTTON */
+/* BOOK NOW BUTTON — SINGLE SOURCE OF TRUTH */
 .service-book-btn {
   margin-top: 8px;
   padding: 6px 12px;
-  background: rgba(255,255,255,0.05); /* subtle for text focus */
+  background: rgba(255,255,255,0.05);
   border: 1px solid #fff;
   border-radius: 6px;
   font-family: 'Lucida Handwriting', cursive;
   font-size: 0.95rem;
+  font-weight: 200;
   cursor: pointer;
   color: #fff;
+  text-align: center;
   text-shadow:
     0 1px 0 rgba(0,0,0,0.85),
     0 0 2px rgba(255,255,255,0.2);
@@ -165,12 +115,8 @@
   text-shadow:
     0 2px 4px rgba(255,255,255,0.9),
     0 0 6px rgba(255,255,255,0.5),
-    0 0 10px rgba(255,255,255,0.3); /* glow */
+    0 0 10px rgba(255,255,255,0.3);
 }
-
-/* ==========================
-   HOME BUTTON & FOOTER — BREATHING CARD STYLE
-========================== */
 
 /* BREATHE ANIMATION */
 @keyframes breathe-text {
@@ -185,33 +131,23 @@
   bottom: 22px;
   left: 50%;
   transform: translateX(-50%);
-  background: transparent;  /* no overlay */
+  background: transparent;
   border: none;
   font-size: 2.4rem;
   cursor: pointer;
   z-index: 10;
-
   font-family: 'Lucida Handwriting', cursive;
   font-weight: 200;
-
-  /* GOLDEN ICON COLOR */
-    color: #fff;
+  color: #fff;
   -webkit-text-fill-color: rgba(255, 245, 220, 0.95) !important;
   -webkit-text-stroke: 0.01px rgba(255, 245, 220, 0.95);
-
   text-shadow:
     0 1px 0 rgba(0,0,0,0.9),
     0 2px 2px rgba(0,0,0,0.6),
     0 0 3px rgba(0,0,0,0.4),
     0 -1px 1px rgba(255,255,255,0.2),
     0 0 2px rgba(255,255,255,0.1);
-
-
-
-
-  /* Adaptive contrast */
   mix-blend-mode: difference;
-
   animation: breathe-text 8s ease-in-out infinite;
   transition: transform 0.2s ease, filter 0.3s ease, text-shadow 0.3s ease;
 }
@@ -226,7 +162,6 @@
   opacity: 1;
 }
 
-/* FOOTER */
 /* FOOTER */
 .services-footer  {
   width: 100%;
@@ -250,26 +185,22 @@
   cursor: default;
 }
 
-/* STACK PHONE + EMAIL */
 .footer-contacts {
   display: flex;
   flex-direction: column;
-  gap: 6px; /* small space between phone & email */
+  gap: 6px;
   margin-bottom: 12px;
-   color: #fff;
+  color: #fff;
 }
 
-/* OPTIONAL: subtle divider dot if desired */
 .footer-contacts span::after {
   content: "";
 }
 
-/* COPY BELOW CONTACTS */
 .footer-copy {
   font-size: 0.85rem;
 }
 
-/* Remove hover for footer */
 .services-footer:hover {
   transform: none;
   filter: none;
@@ -281,12 +212,67 @@
     0 0 2px rgba(255,255,255,0.1);
 }
 
-/* RESPONSIVE */
-@media (max-width: 600px) {
-  .services-title { font-size: 1.6rem; }
-  .service-card-title { font-size: 1rem; }
-  .service-desc { font-size: 0.95rem; }
-  .service-price { font-size: 0.95rem; }
-  .services-grid { gap: 16px; }
-  .service-img { height: 200px; }
+/* ==========================
+   MOBILE — PURE WHITE, NO GLOW, BIGGER TEXT
+========================== */
+@media (max-width: 768px) {
+
+  /* GLOBAL TEXT ON PHONE */
+  body, p, h1, h2, h3, h4, h5, h6, span {
+    color: #ffffff !important;
+    text-shadow: none !important;
+    mix-blend-mode: normal !important;
+  }
+
+  body {
+    font-size: 1.05rem !important;
+    line-height: 1.6 !important;
+  }
+
+  h1 { font-size: 1.8rem !important; }
+  h2, .services-title { font-size: 1.6rem !important; }
+  h3,
+  .service-card-title { font-size: 1.1rem !important; }
+
+  .service-desc,
+  .service-price,
+  .footer-copy {
+    font-size: 0.98rem !important;
+  }
+
+  /* SERVICES GRID — SINGLE COLUMN ON PHONE */
+  .services-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    padding: 0 16px !important;
+  }
+
+  .service-card {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  .service-img {
+    height: 220px !important;
+  }
+
+  /* BUTTON ON PHONE */
+  .service-book-btn {
+    font-size: 0.9rem !important;
+    padding: 5px 10px !important;
+    text-shadow: none !important;
+    mix-blend-mode: normal !important;
+  }
+
+  /* HOME ICON & FOOTER TEXT — CLEANER ON PHONE */
+  .services-home-btn,
+  .services-footer {
+    text-shadow: none !important;
+    mix-blend-mode: normal !important;
+    -webkit-text-stroke: 0 !important;
+  }
+
+  .services-footer {
+    padding: 24px 12px !important;
+  }
 }
