@@ -212,86 +212,103 @@
     0 0 2px rgba(255,255,255,0.1);
 }
 
+
 /* ==========================
-   MOBILE — PREMIUM UPDATE
-   +20% TEXT, WARM WHITE, 300PX IMAGE
+   MOBILE — PREMIUM UPDATE (FINAL)
+   Bigger text, premium white glow, larger image
 ========================== */
 @media (max-width: 768px) {
 
-  /* GLOBAL TEXT — WARM WHITE, CLEAN, ELEGANT */
+  /* GLOBAL TEXT — YOUR ORIGINAL PREMIUM WHITE + GLOW */
   body, p, h1, h2, h3, h4, h5, h6, span {
-    color: #fff7e6 !important;
-    text-shadow: none !important;
-    mix-blend-mode: normal !important;
+    color: #fff !important;
+    mix-blend-mode: difference !important;
+    text-shadow:
+      0 1px 0 rgba(0,0,0,0.9),
+      0 2px 2px rgba(0,0,0,0.6),
+      0 0 3px rgba(0,0,0,0.4),
+      0 -1px 1px rgba(255,255,255,0.2),
+      0 0 2px rgba(255,255,255,0.1) !important;
   }
 
-  /* BASE FONT SIZE — +20% */
+  /* BASE FONT SIZE — INCREASE AGAIN (+30% total) */
   body {
-    font-size: 1.15rem !important;
-    line-height: 1.65 !important;
+    font-size: 1.25rem !important;
+    line-height: 1.7 !important;
   }
 
   /* TITLES */
   h1,
   .services-title {
-    font-size: 1.9rem !important;
+    font-size: 2.1rem !important;
   }
 
   h2 {
-    font-size: 1.7rem !important;
+    font-size: 1.9rem !important;
   }
 
   h3,
   .service-card-title {
-    font-size: 1.25rem !important;
+    font-size: 1.35rem !important;
   }
 
-  /* DESCRIPTIONS & PRICE */
+  /* DESCRIPTION + PRICE */
   .service-desc,
   .service-price,
   .footer-copy {
-    font-size: 1.1rem !important;
+    font-size: 1.15rem !important;
   }
 
-  /* SERVICE IMAGE — INCREASED TO 300PX */
+  /* SERVICE IMAGE — INCREASE WIDTH + HEIGHT */
   .service-img {
-    height: 300px !important;
+    width: 100% !important;
+    height: 320px !important;   /* increased from 300px */
     object-fit: cover !important;
+    border-radius: 8px !important;
   }
 
   /* GRID — SINGLE COLUMN */
   .services-grid {
     grid-template-columns: 1fr !important;
-    gap: 18px !important;
+    gap: 20px !important;
     padding: 0 18px !important;
   }
 
   /* CARD PADDING */
   .service-card {
-    padding-left: 14px !important;
-    padding-right: 14px !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
   }
 
-  /* BUTTON — CLEANER, WARM WHITE */
+  /* BUTTON — APPLY SAME PREMIUM WHITE + GLOW */
   .service-book-btn {
-    font-size: 1rem !important;
-    padding: 6px 12px !important;
-    color: #fff7e6 !important;
-    border-color: #fff7e6 !important;
-    text-shadow: none !important;
-    mix-blend-mode: normal !important;
+    font-size: 1.1rem !important;
+    padding: 7px 14px !important;
+    color: #fff !important;
+    border-color: #fff !important;
+    mix-blend-mode: difference !important;
+    text-shadow:
+      0 1px 0 rgba(0,0,0,0.9),
+      0 2px 2px rgba(0,0,0,0.6),
+      0 0 3px rgba(0,0,0,0.4),
+      0 -1px 1px rgba(255,255,255,0.2),
+      0 0 2px rgba(255,255,255,0.1) !important;
   }
 
-  /* HOME ICON & FOOTER — CLEAN, NO GLOW */
+  /* HOME ICON + FOOTER — SAME PREMIUM WHITE + GLOW */
   .services-home-btn,
   .services-footer {
-    color: #fff7e6 !important;
-    text-shadow: none !important;
-    mix-blend-mode: normal !important;
-    -webkit-text-stroke: 0 !important;
+    color: #fff !important;
+    mix-blend-mode: difference !important;
+    text-shadow:
+      0 1px 0 rgba(0,0,0,0.9),
+      0 2px 2px rgba(0,0,0,0.6),
+      0 0 3px rgba(0,0,0,0.4),
+      0 -1px 1px rgba(255,255,255,0.2),
+      0 0 2px rgba(255,255,255,0.1) !important;
   }
 
   .services-footer {
-    padding: 26px 14px !important;
+    padding: 28px 16px !important;
   }
 }
