@@ -213,66 +213,85 @@
 }
 
 /* ==========================
-   MOBILE — PURE WHITE, NO GLOW, BIGGER TEXT
+   MOBILE — PREMIUM UPDATE
+   +20% TEXT, WARM WHITE, 300PX IMAGE
 ========================== */
 @media (max-width: 768px) {
 
-  /* GLOBAL TEXT ON PHONE */
+  /* GLOBAL TEXT — WARM WHITE, CLEAN, ELEGANT */
   body, p, h1, h2, h3, h4, h5, h6, span {
-    color: #ffffff !important;
+    color: #fff7e6 !important;
     text-shadow: none !important;
     mix-blend-mode: normal !important;
   }
 
+  /* BASE FONT SIZE — +20% */
   body {
-    font-size: 1.05rem !important;
-    line-height: 1.6 !important;
+    font-size: 1.15rem !important;
+    line-height: 1.65 !important;
   }
 
-  h1 { font-size: 1.8rem !important; }
-  h2, .services-title { font-size: 1.6rem !important; }
-  h3,
-  .service-card-title { font-size: 1.1rem !important; }
+  /* TITLES */
+  h1,
+  .services-title {
+    font-size: 1.9rem !important;
+  }
 
+  h2 {
+    font-size: 1.7rem !important;
+  }
+
+  h3,
+  .service-card-title {
+    font-size: 1.25rem !important;
+  }
+
+  /* DESCRIPTIONS & PRICE */
   .service-desc,
   .service-price,
   .footer-copy {
-    font-size: 0.98rem !important;
+    font-size: 1.1rem !important;
   }
 
-  /* SERVICES GRID — SINGLE COLUMN ON PHONE */
+  /* SERVICE IMAGE — INCREASED TO 300PX */
+  .service-img {
+    height: 300px !important;
+    object-fit: cover !important;
+  }
+
+  /* GRID — SINGLE COLUMN */
   .services-grid {
     grid-template-columns: 1fr !important;
-    gap: 16px !important;
-    padding: 0 16px !important;
+    gap: 18px !important;
+    padding: 0 18px !important;
   }
 
+  /* CARD PADDING */
   .service-card {
-    padding-left: 12px !important;
-    padding-right: 12px !important;
+    padding-left: 14px !important;
+    padding-right: 14px !important;
   }
 
-  .service-img {
-    height: 220px !important;
-  }
-
-  /* BUTTON ON PHONE */
+  /* BUTTON — CLEANER, WARM WHITE */
   .service-book-btn {
-    font-size: 0.9rem !important;
-    padding: 5px 10px !important;
+    font-size: 1rem !important;
+    padding: 6px 12px !important;
+    color: #fff7e6 !important;
+    border-color: #fff7e6 !important;
     text-shadow: none !important;
     mix-blend-mode: normal !important;
   }
 
-  /* HOME ICON & FOOTER TEXT — CLEANER ON PHONE */
+  /* HOME ICON & FOOTER — CLEAN, NO GLOW */
   .services-home-btn,
   .services-footer {
+    color: #fff7e6 !important;
     text-shadow: none !important;
     mix-blend-mode: normal !important;
     -webkit-text-stroke: 0 !important;
   }
 
   .services-footer {
-    padding: 24px 12px !important;
+    padding: 26px 14px !important;
   }
 }
