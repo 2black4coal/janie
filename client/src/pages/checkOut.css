@@ -1,0 +1,265 @@
+/* ==========================
+   CHECKOUT PAGE — SERVICES STYLE
+========================== */
+.checkout-page {
+  min-height: 100vh;
+  width: 100%;
+  background-image: url('/images/dirtySoap.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 70px 20px 80px; /* 🔥 more breathing at bottom */
+  font-family: 'Lucida Handwriting', cursive;
+  font-weight: 200;
+  color: #fff;
+
+  animation: breathe-bg 12s ease-in-out infinite alternate;
+}
+
+/* ==========================
+   CARD (TRANSPARENT)
+========================== */
+.checkout-card {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: transparent;
+}
+
+/* ==========================
+   TABLE
+========================== */
+.booking-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.booking-table th,
+.booking-table td {
+  padding: 6px 4px;
+  font-size: 1rem;
+  text-align: center;
+  font-weight: 200;
+  mix-blend-mode: difference;
+}
+
+.booking-table tr {
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+}
+
+/* ==========================
+   TOTAL
+========================== */
+.total-section {
+  text-align: right;
+  margin-top: 6px;
+}
+
+.total-section h3 {
+  font-size: 0.9rem;
+  font-weight: 200;
+}
+
+.total-section p {
+  font-size: 1.2rem;
+  font-weight: 200;
+}
+
+/* ==========================
+   FORM (COMPACT)
+========================== */
+.intake-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+/* INPUTS */
+.intake-form input,
+.intake-form textarea {
+  width: 100%;
+  padding: 5px 6px;
+
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255,255,255,0.5);
+
+  font-family: 'Lucida Handwriting', cursive;
+  font-size: 0.95rem;
+  font-weight: 200;
+
+  color: #fff !important;
+  caret-color: #fff;
+
+  outline: none;
+  mix-blend-mode: normal;
+
+  text-shadow:
+    0 1px 1px rgba(0,0,0,0.9),
+    0 0 2px rgba(0,0,0,0.7);
+}
+
+.intake-form textarea {
+  border: 1px solid rgba(255,255,255,0.4);
+  border-radius: 6px;
+  min-height: 50px;
+}
+
+.intake-form input::placeholder,
+.intake-form textarea::placeholder {
+  color: rgba(255,255,255,0.7);
+}
+
+/* ADDRESS ROW */
+.address-row {
+  display: flex;
+  gap: 6px;
+}
+
+.address-row input {
+  flex: 1;
+}
+
+/* ==========================
+   DIAMOND SUBMIT BUTTON
+========================== */
+.services-home-btn {
+  background: transparent;
+  border: 1px solid rgba(255,245,220,0.95);
+  border-radius: 6px;
+  font-size: 2.4rem;
+  padding: 6px 10px;
+  cursor: pointer;
+  z-index: 10;
+
+  font-family: 'Lucida Handwriting', cursive;
+  font-weight: 200;
+
+  color: rgba(255,245,220,0.95);
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 0.6px rgba(255,245,220,0.95);
+
+  text-shadow:
+    0 1px 0 rgba(0,0,0,0.9),
+    0 2px 2px rgba(0,0,0,0.6),
+    0 0 3px rgba(0,0,0,0.4),
+    0 -1px 1px rgba(255,255,255,0.2),
+    0 0 2px rgba(255,255,255,0.1);
+
+  mix-blend-mode: difference;
+
+  animation: breathe-text 8s ease-in-out infinite;
+  transition: transform 0.2s ease, filter 0.3s ease, text-shadow 0.3s ease;
+}
+
+.services-home-btn:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.15);
+  text-shadow:
+    0 2px 4px rgba(255,255,255,0.9),
+    0 0 6px rgba(255,255,255,0.5),
+    0 0 10px rgba(255,255,255,0.3);
+}
+
+/* ==========================
+   FLOATING PLUS BUTTON
+========================== */
+.add-service-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  animation: breathe-bottom 4s ease-in-out infinite alternate;
+}
+
+.add-service-btn {
+  background: transparent;
+  border: 1px solid rgba(255,245,220,0.95);
+  border-radius: 6px;
+  font-size: 2.6rem;
+  padding: 6px 12px;
+  cursor: pointer;
+
+  color: rgba(255,245,220,0.95);
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 0.8px rgba(255,245,220,0.95);
+
+  text-shadow:
+    0 1px 0 rgba(0,0,0,0.9),
+    0 2px 2px rgba(0,0,0,0.6),
+    0 0 3px rgba(0,0,0,0.4),
+    0 -1px 1px rgba(255,255,255,0.2),
+    0 0 2px rgba(255,255,255,0.1);
+
+  mix-blend-mode: difference;
+
+  animation: breathe-text 8s ease-in-out infinite;
+  transition: transform 0.2s ease, filter 0.3s ease, text-shadow 0.3s ease;
+}
+
+.add-service-btn:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.15);
+  text-shadow:
+    0 2px 4px rgba(255,255,255,0.9),
+    0 0 6px rgba(255,255,255,0.5),
+    0 0 10px rgba(255,255,255,0.3);
+}
+
+/* ==========================
+   KEYFRAMES
+========================== */
+@keyframes breathe-text {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-4px); }
+}
+
+@keyframes breathe-bg {
+  0%, 100% { filter: brightness(0.92); }
+  50% { filter: brightness(1); }
+}
+
+@keyframes breathe-bottom {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0px); }
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+@media (max-width: 600px) {
+  .checkout-page {
+    padding: 60px 14px 60px; /* more bottom space on mobile */
+  }
+
+  .checkout-card {
+    max-width: 95%;
+  }
+
+  .booking-table th,
+  .booking-table td {
+    font-size: 0.8rem;
+  }
+
+  .intake-form input,
+  .intake-form textarea {
+    font-size: 0.9rem;
+  }
+
+  .address-row {
+    flex-direction: column;
+  }
+
+  .icon-buttons {
+    gap: 24px;
+  }
+}

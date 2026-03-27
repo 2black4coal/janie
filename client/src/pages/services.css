@@ -1,0 +1,292 @@
+/* ==========================
+   SERVICES PAGE — SMART TEXT + GLOW FALLBACK
+========================== */
+.services-page {
+  min-height: 100vh;
+  width: 100%;
+  background-image: url("/images/dirtySoap.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 120px 20px 40px;
+  font-family: 'Lucida Handwriting', cursive;
+  font-weight: 200;
+  position: relative;
+  color: #fff;
+}
+
+/* PAGE TITLE */
+.services-title {
+  font-size: 2rem;
+  font-weight: 200;
+  text-align: center;
+  margin-bottom: 40px;
+  color: #fff;
+
+  /* Smart layered shadows for any background */
+  text-shadow:
+    0 1px 0 rgba(0,0,0,0.9),
+    0 2px 2px rgba(0,0,0,0.6),
+    0 0 3px rgba(0,0,0,0.4),
+    0 -1px 1px rgba(255,255,255,0.2),
+    0 0 2px rgba(255,255,255,0.1);
+
+  /* Adaptive contrast */
+  mix-blend-mode: difference;
+}
+
+/* GRID */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 1100px;
+  padding: 0 10px;
+}
+
+/* SERVICE CARD */
+.service-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  background: transparent; /* no overlay */
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  filter: brightness(1.05);
+}
+
+/* IMAGE */
+.service-img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  filter: brightness(0.95);
+}
+
+/* TEXT — AUTO CONTRAST + GLOW FALLBACK */
+.service-card-title,
+.service-desc,
+.service-price {
+  font-weight: 200;
+  text-align: center;
+  margin: 6px 0;
+  font-family: 'Lucida Handwriting', cursive;
+  color: #fff;
+
+  /* Adaptive contrast */
+  mix-blend-mode: difference;
+
+  /* Glow fallback for browsers without mix-blend-mode */
+  text-shadow:
+    0 1px 2px rgba(0,0,0,0.9),
+    0 2px 4px rgba(0,0,0,0.6),
+    0 0 3px rgba(0,0,0,0.4),
+    0 0 4px rgba(255,255,255,0.3);
+}
+/* ==========================
+   BOOK NOW BUTTON — COMPACT & ELEGANT
+========================== */
+.service-book-btn {
+  margin-top: 6px;
+  padding: 4px 10px 100px;            /* 🔹 compact padding */
+  background: rgba(255, 255, 255, 0.05);  /* subtle transparent base */
+  border: 1px solid #fff;
+  border-radius: 4px;            /* 🔹 slightly smaller radius for sleek look */
+  font-family: 'Lucida Handwriting', cursive;
+  font-size: 0.85rem;            /* 🔹 slightly smaller text */
+  font-weight: 200;
+  cursor: pointer;
+  color: #fff;
+  text-align: center;
+
+  /* Smart contrast */
+  mix-blend-mode: difference;
+  text-shadow:
+    0 1px 1px rgba(0,0,0,0.8),
+    0 0 2px rgba(255,255,255,0.2);
+
+  transition: transform 0.2s ease, opacity 0.2s ease, background 0.2s ease;
+}
+
+.service-book-btn:hover {
+  transform: translateY(-1px);
+  opacity: 0.9;
+  background: rgba(255, 255, 255, 0.1); /* subtle hover effect */
+}
+
+/* RESPONSIVE BUTTON TEXT */
+@media (max-width: 600px) {
+  .service-book-btn {
+    font-size: 0.8rem;            /* slightly smaller on mobile */
+    padding: 3px 8px;
+  }
+}
+
+
+
+/* ==========================
+   INTERACTIVE ELEMENTS — UNIFIED GLOW
+========================== */
+
+/* BOOK NOW BUTTON */
+.service-book-btn {
+  margin-top: 8px;
+  padding: 6px 12px;
+  background: rgba(255,255,255,0.05); /* subtle for text focus */
+  border: 1px solid #fff;
+  border-radius: 6px;
+  font-family: 'Lucida Handwriting', cursive;
+  font-size: 0.95rem;
+  cursor: pointer;
+  color: #fff;
+  text-shadow:
+    0 1px 0 rgba(0,0,0,0.85),
+    0 0 2px rgba(255,255,255,0.2);
+  transition: transform 0.2s ease, opacity 0.2s ease, text-shadow 0.3s ease, background 0.2s ease;
+}
+
+.service-book-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+  background: rgba(255,255,255,0.1);
+  text-shadow:
+    0 2px 4px rgba(255,255,255,0.9),
+    0 0 6px rgba(255,255,255,0.5),
+    0 0 10px rgba(255,255,255,0.3); /* glow */
+}
+
+/* ==========================
+   HOME BUTTON & FOOTER — BREATHING CARD STYLE
+========================== */
+
+/* BREATHE ANIMATION */
+@keyframes breathe-text {
+  0%   { transform: scale(1); opacity: 0.9; }
+  50%  { transform: scale(1.015); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.9; }
+}
+
+/* HOME BUTTON */
+.services-home-btn {
+  position: fixed;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: transparent;  /* no overlay */
+  border: none;
+  font-size: 2.4rem;
+  cursor: pointer;
+  z-index: 10;
+
+  font-family: 'Lucida Handwriting', cursive;
+  font-weight: 200;
+
+  /* GOLDEN ICON COLOR */
+    color: #fff;
+  -webkit-text-fill-color: rgba(255, 245, 220, 0.95) !important;
+  -webkit-text-stroke: 0.01px rgba(255, 245, 220, 0.95);
+
+  text-shadow:
+    0 1px 0 rgba(0,0,0,0.9),
+    0 2px 2px rgba(0,0,0,0.6),
+    0 0 3px rgba(0,0,0,0.4),
+    0 -1px 1px rgba(255,255,255,0.2),
+    0 0 2px rgba(255,255,255,0.1);
+
+
+
+
+  /* Adaptive contrast */
+  mix-blend-mode: difference;
+
+  animation: breathe-text 8s ease-in-out infinite;
+  transition: transform 0.2s ease, filter 0.3s ease, text-shadow 0.3s ease;
+}
+
+.services-home-btn:hover {
+  transform: translateX(-50%) translateY(-2px);
+  filter: brightness(1.1);
+  text-shadow:
+    0 2px 4px rgba(255,255,255,0.9),
+    0 0 6px rgba(255,255,255,0.5),
+    0 0 10px rgba(255,255,255,0.3);
+  opacity: 1;
+}
+
+/* FOOTER */
+/* FOOTER */
+.services-footer  {
+  width: 100%;
+  text-align: center;
+  padding: 32px 0;
+  margin-top: 120px;
+  font-size: 0.85rem;
+  font-family: 'Lucida Handwriting', cursive;
+  font-weight: 200;
+  background: transparent;
+  color: #fff;
+  -webkit-text-fill-color: rgba(255, 245, 220, 0.95);
+  -webkit-text-stroke: 0.01px rgba(255, 245, 220, 0.95);
+  text-shadow:
+    0 1px 0 rgba(0,0,0,0.9),
+    0 2px 2px rgba(0,0,0,0.6),
+    0 0 3px rgba(0,0,0,0.4),
+    0 -1px 1px rgba(255,255,255,0.2),
+    0 0 2px rgba(255,255,255,0.1);
+  animation: breathe-text 8s ease-in-out infinite;
+  cursor: default;
+}
+
+/* STACK PHONE + EMAIL */
+.footer-contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 6px; /* small space between phone & email */
+  margin-bottom: 12px;
+   color: #fff;
+}
+
+/* OPTIONAL: subtle divider dot if desired */
+.footer-contacts span::after {
+  content: "";
+}
+
+/* COPY BELOW CONTACTS */
+.footer-copy {
+  font-size: 0.85rem;
+}
+
+/* Remove hover for footer */
+.services-footer:hover {
+  transform: none;
+  filter: none;
+  text-shadow:
+    0 1px 0 rgba(0,0,0,0.9),
+    0 2px 2px rgba(0,0,0,0.6),
+    0 0 3px rgba(0,0,0,0.4),
+    0 -1px 1px rgba(255,255,255,0.2),
+    0 0 2px rgba(255,255,255,0.1);
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .services-title { font-size: 1.6rem; }
+  .service-card-title { font-size: 1rem; }
+  .service-desc { font-size: 0.95rem; }
+  .service-price { font-size: 0.95rem; }
+  .services-grid { gap: 16px; }
+  .service-img { height: 200px; }
+}

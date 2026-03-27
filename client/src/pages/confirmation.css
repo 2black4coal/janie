@@ -1,0 +1,247 @@
+/* ==========================
+   PAGE
+========================== */
+.confirm-page {
+  min-height: 100vh;
+  width: 100%;
+  background-image: url("/images/dirtySoap.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: clamp(16px, 4vw, 40px);
+
+  font-family: 'Lucida Handwriting', cursive;
+  color: #fff;
+}
+
+/* CARD */
+.confirm-card {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+/* TEXT */
+.confirm-title {
+  font-size: 1.8rem;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+  mix-blend-mode: difference;
+}
+
+.confirm-desc {
+  font-size: 1.3rem;
+  text-align: center;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+}
+
+/* FORM */
+.confirm-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ==========================
+   PICKER
+========================== */
+.confirm-picker-wrap {
+  width: 100%;
+  position: relative;
+}
+
+.confirm-input {
+  width: 100%;
+  height: 52px;
+
+  position: relative;
+  z-index: 2;
+
+  background: transparent;
+  border: none;
+  outline: none;
+
+  cursor: pointer;
+
+  color: transparent;
+  caret-color: transparent;
+}
+
+/* full clickable area */
+.confirm-input::-webkit-calendar-picker-indicator {
+  opacity: 0;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+/* hide native text */
+.confirm-input::-webkit-datetime-edit,
+.confirm-input::-webkit-datetime-edit-text,
+.confirm-input::-webkit-datetime-edit-fields-wrapper,
+.confirm-input::-webkit-datetime-edit-month-field,
+.confirm-input::-webkit-datetime-edit-day-field,
+.confirm-input::-webkit-datetime-edit-year-field,
+.confirm-input::-webkit-datetime-edit-hour-field,
+.confirm-input::-webkit-datetime-edit-minute-field {
+  color: transparent;
+}
+
+/* ==========================
+   ICON SYSTEM (GLOBAL FIX)
+========================== */
+/* ==========================
+   ICON SYSTEM — GOLD (FINAL FIX)
+========================== */
+
+/* ALL ICONS (force gold everywhere) */
+.confirm-icon,
+.confirm-picker-icon {
+ 
+
+  -webkit-text-fill-color: rgba(255,245,220,0.95) !important;
+  -webkit-text-stroke: 0.4px rgba(255,245,220,0.95) !important;
+
+  color: #fff;
+
+  /* Adaptive contrast */
+  mix-blend-mode: difference;
+
+  /* Glow fallback for browsers without mix-blend-mode */
+  text-shadow:
+    0 1px 2px rgba(0,0,0,0.9),
+    0 2px 4px rgba(0,0,0,0.6),
+    0 0 3px rgba(0,0,0,0.4),
+    0 0 4px rgba(255,255,255,0.3);
+
+  display: inline-block;
+
+  animation: confirm-breathe 6s ease-in-out infinite;
+}
+
+/* DIAMOND — elegant thin */
+.confirm-diamond {
+  font-size: 1.7rem;
+  -webkit-text-stroke: 0.35px rgba(255,245,220,0.95) !important;
+}
+
+/* BACK ARROW — thinner */
+.confirm-arrow {
+  font-size: 1.5rem;
+  letter-spacing: -1px;
+  -webkit-text-stroke: 0.3px rgba(255,245,220,0.95) !important;
+}
+
+/* PICKER ICON — same gold */
+.confirm-picker-icon {
+  font-size: 1rem;
+
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  pointer-events: none; /* keeps input clickable */
+}
+
+/* ==========================
+   CENTERED CALENDAR ICON
+========================== */
+.confirm-picker-icon {
+  pointer-events: none;
+
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 2rem;
+}
+
+/* ==========================
+   ICON SIZES (THIN + ELEGANT)a
+========================== */
+.confirm-icon {
+  font-size: 1-5rem;
+  display: inline-block;
+  transition: all 0.25s ease;
+}
+/* size */
+.confirm-diamond {
+  font-size: 2.3rem;
+}
+/* size */
+.confirm-arrow {
+  font-size: 2rem;
+  letter-spacing: -1px;
+}
+
+/* BUTTON RESET */
+.confirm-btn {
+  all: unset;
+  cursor: pointer;
+}
+
+/* ACTIONS */
+.confirm-actions,
+.confirm-back-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+/* ==========================
+   HOVER (SPA EFFECT)
+========================== */
+.confirm-btn:hover .confirm-icon,
+.confirm-picker-wrap:hover .confirm-picker-icon {
+  transform: translateY(-2px) scale(1.04);
+  filter: brightness(1.2);
+
+  text-shadow:
+    0 2px 6px rgba(255,255,255,0.4),
+    0 0 10px rgba(255,255,255,0.2);
+}
+
+/* ==========================
+   ANIMATION
+========================== */
+@keyframes confirm-breathe {
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-2px); }
+  100% { transform: translateY(0px); }
+}
+
+/* ==========================
+   EMPTY
+========================== */
+.confirm-no-service {
+  text-align: center;
+  margin-top: 40px;
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+@media (max-width: 600px) {
+  .confirm-icon {
+    font-size: 1.4rem;
+  }
+
+  .confirm-picker-icon {
+    font-size: 0.9rem;
+  }
+}

@@ -1,0 +1,194 @@
+/* ==========================
+   SUCCESS PAGE — SPA STYLE
+========================== */
+.success-page {
+  min-height: 100vh;
+  width: 100%;
+  background-image: url("/images/dirtySoap.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: clamp(20px, 5vw, 40px);
+
+  font-family: 'Lucida Handwriting', cursive;
+  animation: fadeIn 1s ease forwards;
+  opacity: 0; /* fade-in starts from invisible */
+}
+
+/* ==========================
+   CONTENT (CENTERED STACK)
+========================== */
+.success-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(14px, 3vw, 24px);
+  text-align: center;
+}
+
+/* ==========================
+   HERO ICON ✧ — shimmer + breathe
+========================== */
+.success-hero {
+   font-size: clamp(4rem, 10vw, 6rem);
+
+ /* GOLDEN ICON COLOR */
+    color: #fff;
+  -webkit-text-fill-color: rgba(255, 245, 220, 0.95) !important;
+  -webkit-text-stroke: 0.01px rgba(255, 245, 220, 0.95);
+
+  text-shadow:
+    0 1px 0 rgba(0,0,0,0.9),
+    0 2px 2px rgba(0,0,0,0.6),
+    0 0 3px rgba(0,0,0,0.4),
+    0 -1px 1px rgba(255,255,255,0.2),
+    0 0 2px rgba(255,255,255,0.1);
+
+
+
+
+  /* Adaptive contrast */
+  mix-blend-mode: difference;
+
+  animation: breathe-text 8s ease-in-out infinite;
+  transition: transform 0.2s ease, filter 0.3s ease, text-shadow 0.3s ease;
+
+  animation: breathe 6s ease-in-out infinite, shimmer 2s linear infinite alternate, floatY 4s ease-in-out infinite;
+}
+
+/* ==========================
+   TEXT
+========================== */
+.success-title {
+  font-size: clamp(1.6rem, 5vw, 2.2rem);
+  font-weight: 200;
+/* GOLDEN ICON COLOR */
+    color: #fff;
+  -webkit-text-fill-color: rgba(255, 245, 220, 0.95) !important;
+  -webkit-text-stroke: 0.01px rgba(255, 245, 220, 0.95);
+
+  text-shadow:
+    0 1px 0 rgba(0,0,0,0.9),
+    0 2px 2px rgba(0,0,0,0.6),
+    0 0 3px rgba(0,0,0,0.4),
+    0 -1px 1px rgba(255,255,255,0.2),
+    0 0 2px rgba(255,255,255,0.1);
+
+
+
+
+  /* Adaptive contrast */
+  mix-blend-mode: difference;
+
+  animation: breathe-text 8s ease-in-out infinite;
+  transition: transform 0.2s ease, filter 0.3s ease, text-shadow 0.3s ease;
+}
+
+.success-message {
+  font-size: clamp(1rem, 3.5vw, 1.3rem);
+  line-height: 1.4;
+  color: #fff;
+
+  text-shadow:
+    0 1px 0 rgba(0,0,0,0.9),
+    0 2px 2px rgba(0,0,0,0.6),
+    0 0 3px rgba(0,0,0,0.4),
+    0 -1px 1px rgba(255,255,255,0.2),
+    0 0 2px rgba(255,255,255,0.1);
+}
+
+/* ==========================
+   ACTION ICONS (VERTICAL)
+========================== */
+.success-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.success-actions button {
+  all: unset;
+  cursor: pointer;
+  text-align: center;
+}
+
+/* GOLDEN ICON STYLE + float */
+.icon {
+  font-size: 1.8rem;
+
+ /* GOLDEN ICON COLOR */
+    color: #fff;
+  -webkit-text-fill-color: rgba(255, 245, 220, 0.95) !important;
+  -webkit-text-stroke: 0.01px rgba(255, 245, 220, 0.95);
+
+  text-shadow:
+    0 1px 0 rgba(0,0,0,0.9),
+    0 2px 2px rgba(0,0,0,0.6),
+    0 0 3px rgba(0,0,0,0.4),
+    0 -1px 1px rgba(255,255,255,0.2),
+    0 0 2px rgba(255,255,255,0.1);
+
+
+
+
+  /* Adaptive contrast */
+  mix-blend-mode: difference;
+
+  animation: breathe-text 8s ease-in-out infinite;
+  transition: transform 0.2s ease, filter 0.3s ease, text-shadow 0.3s ease;
+
+  transition: transform 0.3s ease, opacity 0.3s ease;
+
+  animation: floatY 4s ease-in-out infinite;
+}
+
+.success-actions button:hover .icon {
+  transform: translateY(-2px) scale(1.05);
+  opacity: 0.9;
+}
+
+/* ==========================
+   ANIMATIONS
+========================== */
+@keyframes breathe {
+  0%   { transform: scale(1); opacity: 0.9; }
+  50%  { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.9; }
+}
+
+@keyframes shimmer {
+  0%   { text-shadow: 0 0 3px rgba(255,255,255,0.2), 0 0 6px rgba(255,255,255,0.1); }
+  50%  { text-shadow: 0 0 6px rgba(255,255,255,0.4), 0 0 12px rgba(255,255,255,0.2); }
+  100% { text-shadow: 0 0 3px rgba(255,255,255,0.2), 0 0 6px rgba(255,255,255,0.1); }
+}
+
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ==========================
+   MOBILE TWEAKS
+========================== */
+@media (max-width: 600px) {
+  .success-actions {
+    gap: 14px;
+  }
+  .icon {
+    font-size: 1.6rem;
+  }
+  .success-hero {
+    font-size: clamp(2.5rem, 10vw, 4rem);
+  }
+}

@@ -1,0 +1,111 @@
+/* ROOT */
+.gallery-root {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* IMAGE LAYER */
+.gallery-layer {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  /* ultra soft image movement */
+  will-change: transform, opacity;
+}
+
+/* OVERLAY */
+.gallery-overlay {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  padding: 1.5rem;
+  max-width: 90vw;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  pointer-events: none;
+}
+
+/* BACKDROP (soft readability, no flicker) */
+.gallery-overlay-backdrop {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  max-width: 420px;
+  height: 100%;
+  border-radius: 999px;
+
+  background: radial-gradient(
+    circle at center,
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.12) 60%,
+    transparent 100%
+  );
+
+  filter: blur(12px);
+  opacity: 0.85;
+
+  pointer-events: none;
+}
+
+/* TEXT (NO animation here — Framer controls everything) */
+.gallery-text {
+  position: relative;
+
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 200;
+  letter-spacing: 0.04em;
+
+  font-size: clamp(1.2rem, 3vw, 2.2rem);
+  line-height: 1.25;
+
+  color: rgba(255, 255, 255, 0.96);
+
+  /* softer, cleaner glow */
+  text-shadow: 0 0 14px rgba(0, 0, 0, 0.6);
+
+  margin: 0;
+  padding: 0 1rem;
+
+  /* prevents rendering flicker */
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* LOADING */
+.gallery-loading {
+  width: 100vw;
+  height: 100vh;
+  background: #020617;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: rgba(255, 255, 255, 0.7);
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 200;
+  letter-spacing: 0.06em;
+}
+
+/* MOBILE */
+@media (max-width: 640px) {
+  .gallery-overlay {
+    padding: 1.25rem;
+  }
+
+  .gallery-overlay-backdrop {
+    max-width: 320px;
+  }
+}

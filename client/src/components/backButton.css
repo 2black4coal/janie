@@ -1,0 +1,14 @@
+.back-btn {
+  padding: 10px 18px;
+  background:none;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.back-btn:hover {
+  background:none;
+}
