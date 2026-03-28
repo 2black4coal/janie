@@ -79,8 +79,8 @@ height: 23px;
     rgba(255,255,255,0.28)   /* slightly brighter */
   );
 
-  animation: dropFall var(--duration, 5s) linear infinite;
-  animation-delay: calc(var(--delay) * -1s);
+  animation: dropFall var(--duration, 7s) linear infinite;
+  animation-delay: calc(var(--delay) * -6s);
 }
 
 
