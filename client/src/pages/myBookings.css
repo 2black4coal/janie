@@ -23,7 +23,10 @@
   font-family: "Cormorant Garamond", serif;
   font-weight: 200;
 }
-
+.btn-summary .icon {
+  mix-blend-mode: normal !important;
+  text-shadow: none;
+}
 /* ============================
    FIXED FLOATING TITLE
 ============================ */
@@ -118,6 +121,13 @@
   color: rgba(255,255,255,0.95);
   text-align: center;
   margin-bottom: 4px;
+   color: #fff;
+  mix-blend-mode: difference;
+  text-shadow:
+    0 1px 2px rgba(0,0,0,0.9),
+    0 2px 4px rgba(0,0,0,0.6),
+    0 0 3px rgba(0,0,0,0.4),
+    0 0 4px rgba(255,255,255,0.3);
 }
 
 /* SERVICE DATE */
@@ -165,7 +175,7 @@
 /* COMMON BUTTON STYLES — remove glass background */
 .btn-primary {
   background: transparent;          /* removed glass */
-  color: rgba(255, 245, 220, 0.95);
+  
   border: none;                     /* remove border if not needed */
   border-radius: 8px;
   padding: 8px 14px;
@@ -176,10 +186,7 @@
   gap: 6px;
   cursor: pointer;
   transition: all 0.3s ease;
-  text-shadow:
-    0 1px 0 rgba(0,0,0,0.9),
-    0 2px 2px rgba(0,0,0,0.6),
-    0 0 3px rgba(255,245,220,0.6);
+ 
 }
 
 .btn-primary:hover {
@@ -189,18 +196,23 @@
 /* LIGHT PLUS ICON */
 .btn-plus .icon {
   font-weight: 100;
-  font-size: 1.6rem;
+  font-size: 1.1rem;
   line-height: 1;
-  color: rgba(255, 245, 220, 0.95);
-  text-shadow: 0 0 4px rgba(255, 245, 220, 0.7);
+   color: #fff !important;
+    mix-blend-mode: difference !important;
+    text-shadow:
+      0 1px 0 rgba(0,0,0,0.9),
+      0 2px 2px rgba(0,0,0,0.6),
+      0 0 3px rgba(0,0,0,0.4),
+      0 -1px 1px rgba(255,255,255,0.2),
+      0 0 2px rgba(255,255,255,0.1) !important;
 }
 
 /* MAGIC WAND ICON */
 .btn-summary .icon {
-  font-size: 1.6rem;
+  font-size: rem;
   line-height: 1;
-  color: rgba(255, 245, 220, 0.95);
-  text-shadow: 0 0 5px rgba(255, 245, 220, 0.7);
+  
   animation: sparkle 1.5s ease-in-out infinite alternate;
 }
 
@@ -231,18 +243,18 @@
 /* LIGHT PLUS ICON */
 .btn-plus .icon {
   font-weight: 100;               /* thin */
-  font-size: 2rem;              /* slightly bigger */
+  font-size: 3rem;              /* slightly bigger */
   line-height: 1;
-  color: rgba(255, 245, 220, 0.95);
-  text-shadow: 0 0 4px rgba(255, 245, 220, 0.7);
+  
+   
 }
 
 /* MAGIC WAND ICON */
 .btn-summary .icon {
   font-size: 2rem;              /* match plus icon */
   line-height: 1;
-  color: rgba(255, 245, 220, 0.95);
-  text-shadow: 0 0 5px rgba(255, 245, 220, 0.7);
+   
+
   animation: sparkle 1.5s ease-in-out infinite alternate;
 }
 
@@ -267,10 +279,19 @@
 /* ============================
    MOBILE
 ============================ */
-@media (max-width: 480px) {
-  .glass-title { font-size: 1.4rem; }
+@media (max-width: 768px) {
+  .glass-title { font-size: 1.3rem; }
   .service-title { font-size: 1.2rem; }
   .service-desc { font-size: 1rem; }
-  .delete-btn { font-size: 0.95rem; }
-  .booking-actions .btn-primary { font-size: 1rem; }
+  .delete-btn { font-size: 1rem; }
+  .booking-actions .btn-primary { font-size: 1.8rem; }
+  .icon { font-size: 4rem; }
 }
+@media (max-width: 768px) {
+  .service-title {
+    line-height: 1.1 !important;   /* tighter vertical spacing */
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+}
+

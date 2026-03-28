@@ -232,16 +232,15 @@
   text-align: center;
   margin-top: 40px;
 }
-
 /* ============================================================
-   MOBILE — FULL PREMIUM SYSTEM (FINAL)
-   Glow, Bigger Text, Bigger Icons, Underlay, Centering, No Flip
+   MOBILE — FULL PREMIUM SYSTEM (FINAL, NO OVERLAY)
+   Sharp White, Bigger Text, Bigger Icons, Full Centering
    PHONE ONLY — DOES NOT AFFECT LAPTOP OR IPAD
 ============================================================ */
 @media (max-width: 768px) {
 
   /* ============================================
-     1. GLOBAL TEXT — PREMIUM WHITE + GLOW
+     1. GLOBAL TEXT — SHARP WHITE + PREMIUM GLOW
   ============================================ */
   .confirm-page,
   .confirm-card,
@@ -261,47 +260,48 @@
       0 0 3px rgba(0,0,0,0.4),
       0 -1px 1px rgba(255,255,255,0.2),
       0 0 2px rgba(255,255,255,0.1) !important;
+    text-align: center !important;
   }
 
   /* ============================================
-     2. BASE FONT SIZE — BIGGER, ELEGANT
+     2. BASE FONT SIZE — INCREASED FOR CLARITY
   ============================================ */
   .confirm-page {
-    font-size: 1.45rem !important;
-    line-height: 1.85 !important;
+    font-size: 1.65rem !important;
+    line-height: 1.95 !important;
   }
 
   .confirm-title {
-    font-size: 2.4rem !important;
+    font-size: 2.8rem !important;
   }
 
   .confirm-desc {
-    font-size: 1.7rem !important;
+    font-size: 2.4rem !important;
   }
 
   /* ============================================
      3. ICONS — BIGGER + GOLD STROKE
   ============================================ */
   .confirm-icon {
-    font-size: 2.4rem !important;
-    -webkit-text-stroke: 0.4px rgba(255,245,220,0.95) !important;
+    font-size: 3.2rem !important;
+    -webkit-text-stroke: 0.45px rgba(255,245,220,0.95) !important;
   }
 
   .confirm-diamond {
-    font-size: 3rem !important;
+    font-size: 3.6rem !important;
   }
 
   .confirm-arrow {
-    font-size: 2.6rem !important;
+    font-size: 3rem !important;
     letter-spacing: -1px;
   }
 
   .confirm-picker-icon {
-    font-size: 2.4rem !important;
+    font-size: 3rem !important;
   }
 
   /* ============================================
-     4. BUTTONS — PREMIUM WHITE + GLOW
+     4. BUTTONS — SHARP WHITE + GLOW
   ============================================ */
   .confirm-btn {
     color: #fff !important;
@@ -312,74 +312,64 @@
       0 0 3px rgba(0,0,0,0.4),
       0 -1px 1px rgba(255,255,255,0.2),
       0 0 2px rgba(255,255,255,0.1) !important;
+    text-align: center !important;
   }
 
   /* ============================================
      5. PICKER — CLEAN + CENTERED
   ============================================ */
   .confirm-input {
-    height: 60px !important;
+    height: 64px !important;
+    text-align: center !important;
   }
 
   .confirm-picker-wrap {
-    margin-top: 10px !important;
+    margin-top: 12px !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
   }
 
   /* ============================================
-     6. CARD SPACING — MORE BREATHING ROOM
+     6. CARD SPACING — CENTERED + BREATHING ROOM
   ============================================ */
   .confirm-card {
-    gap: 22px !important;
-    padding: 0 14px !important;
+    gap: 26px !important;
+    padding: 0 16px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
   }
 
   .confirm-form {
-    gap: 18px !important;
+    gap: 20px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
   }
 
   /* ============================================
-     7. UNDERLAY — SOFT DARK LAYER FOR CLARITY
-  ============================================ */
-  .confirm-page {
-    position: relative;
-  }
-
-  .confirm-page::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0.25); /* soft premium underlay */
-    z-index: 0;
-  }
-
-  /* keep content above underlay */
-  .confirm-card,
-  .confirm-title,
-  .confirm-desc,
-  .confirm-form,
-  .confirm-picker-wrap,
-  .confirm-actions,
-  .confirm-back-wrap {
-    position: relative;
-    z-index: 2;
-  }
-
-  /* ============================================
-     8. STOP BACKGROUND FLIPPING ON PHONE
+     7. STOP BACKGROUND FLIPPING ON PHONE
   ============================================ */
   .confirm-page {
     background-attachment: scroll !important;
   }
 
   /* ============================================
-     9. PERFECT VERTICAL CENTERING
+     8. FULL‑PAGE PERFECT CENTERING
   ============================================ */
   .confirm-page {
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
+    flex-direction: column !important;
     padding: 0 !important;
     min-height: 100vh !important;
+    text-align: center !important;
   }
 
   /* ensure card stays centered */
@@ -388,3 +378,12 @@
     z-index: 2;
   }
 }
+  /* ============================================
+     2B. TITLE + DESCRIPTION — MINIMUM LINE SPACE
+  ============================================ */
+  .confirm-title,
+  .confirm-desc {
+    line-height: 1.1 !important;   /* tightest clean spacing */
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }

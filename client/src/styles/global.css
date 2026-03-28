@@ -1,0 +1,15 @@
+/* GLOBAL — STOP ALL SHIFTING WITHOUT TOUCHING BACKGROUND */
+html, body {
+  margin: 0;
+  padding: 0;
+
+  /* stop sideways shift */
+  overflow-x: hidden !important;
+
+  /* stop vertical wobble / bounce */
+  overscroll-behavior-y: none !important;
+
+  /* keep layout stable */
+  width: 100% !important;
+  max-width: 100% !important;
+}

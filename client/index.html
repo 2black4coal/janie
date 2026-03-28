@@ -3,11 +3,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Janie Care</title>
+    <title>Janie-Care</title>
   </head>
 
   <body>
     <div id="root"></div>
+
+    <!-- 🔥 HIDDEN NETLIFY FORM FOR DETECTION -->
+    <form name="checkout" netlify netlify-honeypot="bot-field" hidden>
+      <input type="text" name="fullName" />
+      <input type="email" name="email" />
+      <input type="text" name="phone" />
+      <input type="text" name="address" />
+      <input type="text" name="city" />
+      <input type="text" name="state" />
+      <input type="text" name="zip" />
+      <textarea name="notes"></textarea>
+      <input type="text" name="services" />
+      <input type="text" name="total" />
+    </form>
+    <!-- 🔥 END HIDDEN FORM -->
+
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

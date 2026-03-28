@@ -96,6 +96,7 @@
   background: rgba(255,255,255,0.05);
   border: 1px solid #fff;
   border-radius: 6px;
+ 
   font-family: 'Lucida Handwriting', cursive;
   font-size: 0.95rem;
   font-weight: 200;
@@ -129,10 +130,11 @@
 .services-home-btn {
   position: fixed;
   bottom: 22px;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 50% !important;
+  transform: translateX(-50%) !important;
   background: transparent;
   border: none;
+ 
   font-size: 2.4rem;
   cursor: pointer;
   z-index: 10;
@@ -240,7 +242,7 @@
   /* TITLES */
   h1,
   .services-title {
-    font-size: 2.6rem !important;
+    font-size: 2.7rem !important;
   }
 
   h2 {
@@ -249,20 +251,28 @@
 
   h3,
   .service-card-title {
-    font-size: 1.5rem !important;
+    font-size: 2rem !important;
   }
 
   /* DESCRIPTION + PRICE */
   .service-desc,
   .service-price,
   .footer-copy {
-    font-size: 1.35rem !important;
+    font-size: 1.8rem !important;
   }
+  .service-card-title {
+  line-height: 1.1 !important;   /* tighten */
+}
+  .service-desc,
+.service-price {
+  line-height: 1.15 !important;  /* tighten */
+}
+
 
   /* SERVICE IMAGE — INCREASE WIDTH + HEIGHT */
   .service-img {
     width: 100% !important;
-    height: 340px !important;   /* increased from 300px */
+    height: 420px !important;   /* increased from 300px */
     object-fit: cover !important;
     border-radius: 8px !important;
   }
@@ -310,5 +320,14 @@
 
   .services-footer {
     padding: 28px 16px !important;
+    font-size: 1.5rem !important;
+  }
+}
+@media (max-width: 768px) {
+  html, body {
+    overscroll-behavior: none !important;   /* stops bounce up/down */
+    overflow-x: hidden !important;          /* stops sideways shift */
+    height: 100%;
+    max-height: 100%;
   }
 }

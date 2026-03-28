@@ -1,4 +1,6 @@
-/* PAGE */
+/* ==========================
+   PAGE
+========================== */
 .home-page {
   position: relative;
   width: 100%;
@@ -13,19 +15,17 @@
   justify-content: center;
 }
 
-/* IMAGE — SAME BEHAVIOR AS MYBOOKINGS */
+/* IMAGE — HERO */
 .hero-image {
   width: 100%;
   height: auto;
   max-height: 100vh;
-
-object-position: center 0%;
-
+  object-position: center 0%;
   display: block;
   object-fit: contain;
 }
 
-/* OVERLAY (on top of image) */
+/* OVERLAY */
 .home-overlay {
   position: absolute;
   inset: 0;
@@ -54,7 +54,9 @@ object-position: center 0%;
     0 0 18px rgba(0,0,0,0.7);
 }
 
-/* RAIN */
+/* ==========================
+   RAIN — LIGHT & SLOW
+========================== */
 .rain {
   position: absolute;
   inset: 0;
@@ -66,24 +68,36 @@ object-position: center 0%;
   position: absolute;
   left: calc(var(--x) * 100%);
   top: -40px;
-  width: 3px;
-  height: 28px;
+
+  width: 2.3px;
+height: 23px;
   border-radius: 999px;
-  background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.55));
-  animation: dropFall 2.4s linear infinite;
+
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(255,255,255,0.28)   /* slightly brighter */
+  );
+
+  animation: dropFall var(--duration, 5s) linear infinite;
   animation-delay: calc(var(--delay) * -1s);
 }
 
+
 @keyframes dropFall {
-  to { transform: translateY(120vh); }
+  to {
+    transform: translateY(120vh);
+  }
 }
 
-/* SPLASHES */
+/* ==========================
+   SPLASHES — REDUCED
+========================== */
 .splashes {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 30px;
+  height: 25px;
   z-index: 4;
   pointer-events: none;
 }
@@ -92,31 +106,59 @@ object-position: center 0%;
   position: absolute;
   left: calc(var(--x) * 100%);
   bottom: 0;
-  width: 8px;
-  height: 8px;
-  background: rgba(255,255,255,0.35);
+
+  width: 5px;
+  height: 5px;
+  background: rgba(255,255,255,0.25);
   border-radius: 50%;
-  animation: splashUp 0.9s ease-out infinite;
+
+  animation: splashUp 1.2s ease-out infinite;
 }
 
 @keyframes splashUp {
-  0% { transform: translateY(0) scale(0.3); opacity: 0.6; }
-  100% { transform: translateY(-12px) scale(1); opacity: 0; }
+  0% { transform: translateY(0) scale(0.3); opacity: 0.5; }
+  100% { transform: translateY(-10px) scale(1); opacity: 0; }
 }
 
-/* LIGHTNING */
+/* ==========================
+   LIGHTNING — SOFTER
+========================== */
 .lightning {
   position: absolute;
   inset: 0;
   z-index: 4;
   pointer-events: none;
-  background: radial-gradient(circle at top, rgba(255,255,255,0.1), transparent 70%);
+
+  background: radial-gradient(
+    circle at top,
+    rgba(255,255,255,0.06),
+    transparent 70%
+  );
+
   opacity: 0;
-  animation: lightning 26s infinite;
+  animation: lightning 30s infinite;
 }
 
 @keyframes lightning {
-  0%,45%,100% { opacity: 0; }
-  50% { opacity: 0.12; }
+  0%, 48%, 100% { opacity: 0; }
+  50% { opacity: 0.08; } /* softer flash */
 }
 
+/* ==========================
+   RESPONSIVE
+========================== */
+@media (max-width: 600px) {
+  .home-text h1 {
+    font-size: clamp(1.8rem, 6vw, 2.6rem);
+  }
+
+  .drop {
+    height: 18px;
+    width: 2.1px;
+  }
+
+  .splash {
+    width: 4px;
+    height: 4px;
+  }
+}
