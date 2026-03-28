@@ -14,7 +14,8 @@ export default function CheckoutSuccess() {
         {/* TEXT */}
         <h2 className="success-title">Thank You</h2>
         <p className="success-message">
-          Your booking has been confirmed
+          Your booking has been confirmed <br />
+          We look forward to welcoming you soon!
         </p>
 
         {/* ACTION ICONS */}
