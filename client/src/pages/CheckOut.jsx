@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import "./checkOut.css";
+import "./checkout.css";
 
 export default function CheckOut() {
   const navigate = useNavigate();
@@ -21,12 +21,17 @@ export default function CheckOut() {
       services: formData.get("services"),
     };
 
-    await fetch("/.netlify/functions/send-email", {
+    const res = await fetch("/api/send-email", {
       method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
     });
 
-    e.target.submit();
+    if (res.ok) {
+      navigate("/checkout-success");
+    } else {
+      console.error("Email failed");
+    }
   }
 
   return (
@@ -69,16 +74,7 @@ export default function CheckOut() {
             <p>${total.toFixed(2)}</p>
           </div>
 
-          <form
-            className="intake-form"
-            name="checkout"
-            method="POST"
-            data-netlify="true"
-            data-netlify-honeypot="bot-field"
-            action="/checkout-success"
-            onSubmit={handleSubmit}
-          >
-            <input type="hidden" name="form-name" value="checkout" />
+          <form className="intake-form" onSubmit={handleSubmit}>
             <input
               type="hidden"
               name="services"
