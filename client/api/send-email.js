@@ -3,7 +3,7 @@ import { Resend } from "resend";
 export default async function handler(req, res) {
   console.log("🔥 METHOD:", req.method);
 
-  // Fix 405
+  // ✅ Fix 405
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
@@ -11,9 +11,9 @@ export default async function handler(req, res) {
   try {
     const resend = new Resend(process.env.RESEND_API_KEY);
 
-    console.log("📦 BODY:", req.body);
-
     const { email, fullName, total, services, phone } = req.body;
+
+    console.log("📦 BODY:", req.body);
 
     if (!email || !fullName || !phone) {
       return res.status(400).json({ error: "Missing required fields" });
@@ -23,7 +23,7 @@ export default async function handler(req, res) {
     await resend.emails.send({
       from: "onboarding@resend.dev",
       to: email,
-      subject: "We received your service request",
+      subject: "Booking received",
       html: `
         <p>Hi ${fullName},</p>
         <p>Total: $${total}</p>
@@ -52,6 +52,9 @@ export default async function handler(req, res) {
 
   } catch (error) {
     console.error("💥 ERROR:", error);
-    return res.status(500).json({ error: error.message });
+
+    return res.status(500).json({
+      error: error.message || "Internal Server Error",
+    });
   }
 }
