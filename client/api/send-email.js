@@ -1,48 +1,43 @@
 import { Resend } from "resend";
 
-export async function POST(request) {
-  console.log("🔥 API HIT");
+export default async function handler(req, res) {
+  console.log("🔥 METHOD:", req.method);
+
+  // Fix 405
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "Method not allowed" });
+  }
 
   try {
     const resend = new Resend(process.env.RESEND_API_KEY);
 
-    const body = await request.json();
-    console.log("📦 BODY:", body);
+    console.log("📦 BODY:", req.body);
 
-    const { email, fullName, total, services, phone } = body;
+    const { email, fullName, total, services, phone } = req.body;
 
-    // ❌ validate
     if (!email || !fullName || !phone) {
-      console.log("❌ Missing fields");
-      return new Response(JSON.stringify({ error: "Missing required fields" }), {
-        status: 400,
-        headers: { "Content-Type": "application/json" },
-      });
+      return res.status(400).json({ error: "Missing required fields" });
     }
 
-    // ✅ 1. Send email to CUSTOMER
+    // ✅ Send to customer
     await resend.emails.send({
-      from: "onboarding@resend.dev", // required unless domain verified
+      from: "onboarding@resend.dev",
       to: email,
       subject: "We received your service request",
       html: `
         <p>Hi ${fullName},</p>
-        <p>Thank you for booking with Janie-Care.</p>
-        <p><strong>Total:</strong> $${total}</p>
-        <p><strong>Services:</strong> ${services}</p>
-        <p><strong>Phone:</strong> ${phone}</p>
+        <p>Total: $${total}</p>
+        <p>Services: ${services}</p>
+        <p>Phone: ${phone}</p>
       `,
     });
 
-    console.log("📨 Customer email sent");
-
-    // ✅ 2. Send email to YOU (the owner)
+    // ✅ Send to you
     await resend.emails.send({
       from: "onboarding@resend.dev",
       to: "fb.axon.01@gmail.com",
-      subject: "📥 New Janie-Care Booking Received",
+      subject: "New Booking",
       html: `
-        <h3>New Booking Details</h3>
         <p><strong>Name:</strong> ${fullName}</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Phone:</strong> ${phone}</p>
@@ -51,24 +46,12 @@ export async function POST(request) {
       `,
     });
 
-    console.log("📨 Owner notification sent");
+    console.log("✅ EMAILS SENT");
 
-    return new Response(JSON.stringify({ success: true }), {
-      status: 200,
-      headers: { "Content-Type": "application/json" },
-    });
+    return res.status(200).json({ success: true });
 
   } catch (error) {
     console.error("💥 ERROR:", error);
-
-    return new Response(
-      JSON.stringify({
-        error: error.message || "Internal Server Error",
-      }),
-      {
-        status: 500,
-        headers: { "Content-Type": "application/json" },
-      }
-    );
+    return res.status(500).json({ error: error.message });
   }
 }

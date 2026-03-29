@@ -1,4 +1,3 @@
-
 "use client";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -37,21 +36,23 @@ export default function CheckOut() {
         body: JSON.stringify(payload),
       });
 
+      // 🔥 THIS IS THE FIX
+      const data = await res.json();
+
       if (!res.ok) {
-        throw new Error("Failed to send email");
+        console.error("❌ API ERROR:", data);
+        alert(data.error || "Failed to send email");
+        return; // ❗ stop execution
       }
 
-      // ✅ Clear bookings after successful submission
+      // ✅ SUCCESS
       localStorage.removeItem("myBookings");
       setBookings([]);
-
-      // ✅ Navigate safely
       navigate("/checkout-success");
+
     } catch (err) {
-      console.error(err);
-      alert(
-        "Something went wrong while submitting your booking. Please try again."
-      );
+      console.error("💥 NETWORK ERROR:", err);
+      alert("Something went wrong while submitting your booking. Please try again.");
     }
   }
 
@@ -115,11 +116,17 @@ export default function CheckOut() {
               placeholder="Email Address"
               required
             />
-            <input type="text" name="phone" placeholder="Phone Number" required />
+            <input
+              type="text"
+              name="phone"
+              placeholder="Phone Number"
+              required
+            />
 
             <div className="address-row">
               <input type="text" name="address" placeholder="Address" required />
               <input type="text" name="city" placeholder="City" required />
+
               <input
                 type="text"
                 name="state"
@@ -133,6 +140,7 @@ export default function CheckOut() {
                   e.target.value = e.target.value.toUpperCase();
                 }}
               />
+
               <input
                 type="text"
                 name="zip"
