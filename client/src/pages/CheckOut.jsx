@@ -36,12 +36,12 @@ export default function CheckOut() {
         body: JSON.stringify(payload),
       });
 
-      // ✅ SAFE RESPONSE HANDLING (fixes your crash)
+      // 🔹 SAFE RESPONSE HANDLING
+      const text = await res.text(); // read body only once
       let data;
       try {
-        data = await res.json();
+        data = JSON.parse(text);
       } catch {
-        const text = await res.text();
         console.error("❌ NON-JSON RESPONSE:", text);
         alert(text || "Server error");
         return;
@@ -134,7 +134,6 @@ export default function CheckOut() {
             <div className="address-row">
               <input type="text" name="address" placeholder="Address" required />
               <input type="text" name="city" placeholder="City" required />
-
               <input
                 type="text"
                 name="state"
@@ -148,7 +147,6 @@ export default function CheckOut() {
                   e.target.value = e.target.value.toUpperCase();
                 }}
               />
-
               <input
                 type="text"
                 name="zip"
