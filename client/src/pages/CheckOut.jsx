@@ -36,13 +36,21 @@ export default function CheckOut() {
         body: JSON.stringify(payload),
       });
 
-      // 🔥 THIS IS THE FIX
-      const data = await res.json();
+      // ✅ SAFE RESPONSE HANDLING (fixes your crash)
+      let data;
+      try {
+        data = await res.json();
+      } catch {
+        const text = await res.text();
+        console.error("❌ NON-JSON RESPONSE:", text);
+        alert(text || "Server error");
+        return;
+      }
 
       if (!res.ok) {
         console.error("❌ API ERROR:", data);
         alert(data.error || "Failed to send email");
-        return; // ❗ stop execution
+        return;
       }
 
       // ✅ SUCCESS
