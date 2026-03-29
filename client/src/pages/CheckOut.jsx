@@ -4,33 +4,52 @@ import "./checkout.css";
 
 export default function CheckOut() {
   const navigate = useNavigate();
-  const [bookings] = useState(() =>
+  const [bookings, setBookings] = useState(() =>
     JSON.parse(localStorage.getItem("myBookings")) || []
   );
+
   const total = bookings.reduce((sum, b) => sum + Number(b.price), 0);
 
   async function handleSubmit(e) {
     e.preventDefault();
 
-    const formData = new FormData(e.target);
+    try {
+      const formData = new FormData(e.target);
 
-    const payload = {
-      email: formData.get("email"),
-      fullName: formData.get("fullName"),
-      total: formData.get("total"),
-      services: formData.get("services"),
-    };
+      const payload = {
+        email: formData.get("email"),
+        fullName: formData.get("fullName"),
+        phone: formData.get("phone"),
+        address: formData.get("address"),
+        city: formData.get("city"),
+        state: formData.get("state"),
+        zip: formData.get("zip"),
+        notes: formData.get("notes"),
+        total: formData.get("total"),
+        services: formData.get("services"),
+      };
 
-    const res = await fetch("/api/send-email", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
+      const res = await fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
 
-    if (res.ok) {
+      if (!res.ok) {
+        throw new Error("Failed to send email");
+      }
+
+      // ✅ Clear bookings after successful submission
+      localStorage.removeItem("myBookings");
+      setBookings([]);
+
+      // ✅ Navigate safely
       navigate("/checkout-success");
-    } else {
-      console.error("Email failed");
+    } catch (err) {
+      console.error(err);
+      alert(
+        "Something went wrong while submitting your booking. Please try again."
+      );
     }
   }
 
@@ -82,14 +101,23 @@ export default function CheckOut() {
             />
             <input type="hidden" name="total" value={total.toFixed(2)} />
 
-            <input type="text" name="fullName" placeholder="Full Name" required />
-            <input type="email" name="email" placeholder="Email Address" required />
+            <input
+              type="text"
+              name="fullName"
+              placeholder="Full Name"
+              required
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email Address"
+              required
+            />
             <input type="text" name="phone" placeholder="Phone Number" required />
 
             <div className="address-row">
               <input type="text" name="address" placeholder="Address" required />
               <input type="text" name="city" placeholder="City" required />
-
               <input
                 type="text"
                 name="state"
@@ -103,7 +131,6 @@ export default function CheckOut() {
                   e.target.value = e.target.value.toUpperCase();
                 }}
               />
-
               <input
                 type="text"
                 name="zip"

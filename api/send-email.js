@@ -1,10 +1,15 @@
 import { Resend } from "resend";
 
 export default async function handler(req, res) {
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "Method not allowed" });
+  }
+
   try {
     const resend = new Resend(process.env.RESEND_API_KEY);
 
-    const { email, fullName, total, services } = JSON.parse(req.body);
+    // ✅ No JSON.parse — Vercel parses JSON automatically
+    const { email, fullName, total, services } = req.body;
 
     await resend.emails.send({
       from: "Janie-Care <no-reply@janiecare.com>",
@@ -22,6 +27,7 @@ export default async function handler(req, res) {
 
     return res.status(200).json({ success: true });
   } catch (error) {
+    console.error("Send email error:", error);
     return res.status(500).json({ error: error.message });
   }
 }
