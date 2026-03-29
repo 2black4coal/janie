@@ -1,13 +1,6 @@
 import { Resend } from "resend";
 
 export default async function handler(req, res) {
-  console.log("🔥 METHOD:", req.method);
-
-  if (req.method !== "POST") {
-    res.status(405).json({ error: "Method not allowed" });
-    return;
-  }
-
   try {
     // ⭐ Parse JSON manually (Vercel Node Functions)
     let body = "";
@@ -19,7 +12,8 @@ export default async function handler(req, res) {
     const { email, fullName, total, services, phone } = data;
 
     if (!email || !fullName || !phone) {
-      res.status(400).json({ error: "Missing required fields" });
+      res.writeHead(400, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ error: "Missing required fields" }));
       return;
     }
 
@@ -52,12 +46,12 @@ export default async function handler(req, res) {
       `,
     });
 
-    console.log("✅ EMAILS SENT");
-
-    res.status(200).json({ success: true });
+    res.writeHead(200, { "Content-Type": "application/json" });
+    res.end(JSON.stringify({ success: true }));
 
   } catch (error) {
     console.error("💥 ERROR:", error);
-    res.status(500).json({ error: error.message || "Internal Server Error" });
+    res.writeHead(500, { "Content-Type": "application/json" });
+    res.end(JSON.stringify({ error: error.message || "Internal Server Error" }));
   }
 }
