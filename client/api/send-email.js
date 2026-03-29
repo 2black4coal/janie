@@ -3,23 +3,26 @@ import { Resend } from "resend";
 export default async function handler(req, res) {
   console.log("🔥 METHOD:", req.method);
 
-  // ✅ Fix 405
+  // Allow only POST
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
   try {
-    const resend = new Resend(process.env.RESEND_API_KEY);
+    // ⭐ Vercel Node Functions DO NOT parse JSON automatically
+    const body = await new Response(req.body).json();
 
-    const { email, fullName, total, services, phone } = req.body;
+    const { email, fullName, total, services, phone } = body;
 
-    console.log("📦 BODY:", req.body);
+    console.log("📦 BODY:", body);
 
     if (!email || !fullName || !phone) {
       return res.status(400).json({ error: "Missing required fields" });
     }
 
-    // ✅ Send to customer
+    const resend = new Resend(process.env.RESEND_API_KEY);
+
+    // Send to customer
     await resend.emails.send({
       from: "onboarding@resend.dev",
       to: email,
@@ -32,7 +35,7 @@ export default async function handler(req, res) {
       `,
     });
 
-    // ✅ Send to you
+    // Send to you
     await resend.emails.send({
       from: "onboarding@resend.dev",
       to: "fb.axon.01@gmail.com",
@@ -52,9 +55,6 @@ export default async function handler(req, res) {
 
   } catch (error) {
     console.error("💥 ERROR:", error);
-
-    return res.status(500).json({
-      error: error.message || "Internal Server Error",
-    });
+    return res.status(500).json({ error: error.message || "Internal Server Error" });
   }
 }

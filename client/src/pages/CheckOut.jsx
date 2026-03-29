@@ -1,4 +1,5 @@
 "use client";
+
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import "./checkOut.css";
@@ -36,14 +37,15 @@ export default function CheckOut() {
         body: JSON.stringify(payload),
       });
 
-      // 🔹 SAFE RESPONSE HANDLING
-      const text = await res.text(); // read body only once
+      // ⭐ READ BODY ONLY ONCE
+      const raw = await res.text();
+
       let data;
       try {
-        data = JSON.parse(text);
+        data = JSON.parse(raw);
       } catch {
-        console.error("❌ NON-JSON RESPONSE:", text);
-        alert(text || "Server error");
+        console.error("❌ NON‑JSON RESPONSE:", raw);
+        alert(raw || "Server error");
         return;
       }
 
@@ -53,7 +55,7 @@ export default function CheckOut() {
         return;
       }
 
-      // ✅ SUCCESS
+      // ⭐ SUCCESS
       localStorage.removeItem("myBookings");
       setBookings([]);
       navigate("/checkout-success");
@@ -105,31 +107,12 @@ export default function CheckOut() {
           </div>
 
           <form className="intake-form" onSubmit={handleSubmit}>
-            <input
-              type="hidden"
-              name="services"
-              value={JSON.stringify(bookings)}
-            />
+            <input type="hidden" name="services" value={JSON.stringify(bookings)} />
             <input type="hidden" name="total" value={total.toFixed(2)} />
 
-            <input
-              type="text"
-              name="fullName"
-              placeholder="Full Name"
-              required
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Email Address"
-              required
-            />
-            <input
-              type="text"
-              name="phone"
-              placeholder="Phone Number"
-              required
-            />
+            <input type="text" name="fullName" placeholder="Full Name" required />
+            <input type="email" name="email" placeholder="Email Address" required />
+            <input type="text" name="phone" placeholder="Phone Number" required />
 
             <div className="address-row">
               <input type="text" name="address" placeholder="Address" required />
