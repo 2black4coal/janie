@@ -6,10 +6,9 @@ export default async function handler(req, res) {
   }
 
   try {
-    const resend = new Resend(process.env.RESEND_API_KEY);
+    const resend = new Resend(process.env.RESEND_API_KEY); // Node env
 
-    // ✅ No JSON.parse — Vercel parses JSON automatically
-    const { email, fullName, total, services } = req.body;
+    const { email, fullName, total, services } = req.body; // req.body parsed automatically
 
     await resend.emails.send({
       from: "Janie-Care <no-reply@janiecare.com>",
@@ -27,7 +26,7 @@ export default async function handler(req, res) {
 
     return res.status(200).json({ success: true });
   } catch (error) {
-    console.error("Send email error:", error);
+    console.error(error);
     return res.status(500).json({ error: error.message });
   }
 }
