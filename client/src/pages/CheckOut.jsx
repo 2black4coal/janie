@@ -27,8 +27,8 @@ export default function CheckOut() {
         state: formData.get("state"),
         zip: formData.get("zip"),
         notes: formData.get("notes"),
-        total: formData.get("total"),
-        services: formData.get("services"),
+        total: total.toFixed(2),
+        services: JSON.stringify(bookings),
       };
 
       const res = await fetch("/api/send-email", {
@@ -37,17 +37,7 @@ export default function CheckOut() {
         body: JSON.stringify(payload),
       });
 
-      // ⭐ READ BODY ONLY ONCE
-      const raw = await res.text();
-
-      let data;
-      try {
-        data = JSON.parse(raw);
-      } catch {
-        console.error("❌ NON‑JSON RESPONSE:", raw);
-        alert(raw || "Server error");
-        return;
-      }
+      const data = await res.json();
 
       if (!res.ok) {
         console.error("❌ API ERROR:", data);
@@ -55,7 +45,7 @@ export default function CheckOut() {
         return;
       }
 
-      // ⭐ SUCCESS
+      // Success — clear bookings and navigate
       localStorage.removeItem("myBookings");
       setBookings([]);
       navigate("/checkout-success");
@@ -68,7 +58,7 @@ export default function CheckOut() {
 
   return (
     <div className="checkout-page">
-      {bookings.length === 0 && (
+      {bookings.length === 0 ? (
         <div className="empty-state">
           <p>You have no bookings.</p>
           <button
@@ -78,9 +68,7 @@ export default function CheckOut() {
             +
           </button>
         </div>
-      )}
-
-      {bookings.length > 0 && (
+      ) : (
         <div className="checkout-card">
           <table className="booking-table">
             <thead>
@@ -126,9 +114,7 @@ export default function CheckOut() {
                 autoCapitalize="characters"
                 autoCorrect="off"
                 className="state-input"
-                onChange={(e) => {
-                  e.target.value = e.target.value.toUpperCase();
-                }}
+                onChange={(e) => { e.target.value = e.target.value.toUpperCase(); }}
               />
               <input
                 type="text"
@@ -138,9 +124,7 @@ export default function CheckOut() {
                 maxLength={5}
                 pattern="\d{5}"
                 inputMode="numeric"
-                onChange={(e) => {
-                  e.target.value = e.target.value.replace(/\D/g, "");
-                }}
+                onChange={(e) => { e.target.value = e.target.value.replace(/\D/g, ""); }}
               />
             </div>
 
