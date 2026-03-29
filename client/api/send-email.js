@@ -1,21 +1,26 @@
 import { Resend } from "resend";
 
-export const config = {
-  runtime: "edge",
-};
+export default async function handler(req, res) {
+  console.log("🔥 METHOD:", req.method);
 
-export default async function handler(request) {
+  if (req.method !== "POST") {
+    res.status(405).json({ error: "Method not allowed" });
+    return;
+  }
+
   try {
-    // ⭐ Parse JSON body (Edge runtime)
-    const body = await request.json();
+    // ⭐ Parse JSON manually (Vercel Node Functions)
+    let body = "";
+    for await (const chunk of req) {
+      body += chunk;
+    }
+    const data = JSON.parse(body);
 
-    const { email, fullName, total, services, phone } = body;
+    const { email, fullName, total, services, phone } = data;
 
     if (!email || !fullName || !phone) {
-      return new Response(
-        JSON.stringify({ error: "Missing required fields" }),
-        { status: 400, headers: { "Content-Type": "application/json" } }
-      );
+      res.status(400).json({ error: "Missing required fields" });
+      return;
     }
 
     const resend = new Resend(process.env.RESEND_API_KEY);
@@ -47,17 +52,12 @@ export default async function handler(request) {
       `,
     });
 
-    return new Response(
-      JSON.stringify({ success: true }),
-      { status: 200, headers: { "Content-Type": "application/json" } }
-    );
+    console.log("✅ EMAILS SENT");
+
+    res.status(200).json({ success: true });
 
   } catch (error) {
     console.error("💥 ERROR:", error);
-
-    return new Response(
-      JSON.stringify({ error: error.message || "Internal Server Error" }),
-      { status: 500, headers: { "Content-Type": "application/json" } }
-    );
+    res.status(500).json({ error: error.message || "Internal Server Error" });
   }
 }
