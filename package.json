@@ -1,4 +1,11 @@
 {
+  "name": "janie-care",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "cd client && npm install && npm run build"
+  },
   "dependencies": {
     "resend": "^6.9.4"
   }
