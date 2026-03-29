@@ -1,11 +1,10 @@
 import { Resend } from "resend";
 
-export default async (req, context) => {
+export async function POST(request) {
   try {
     const resend = new Resend(process.env.RESEND_API_KEY);
 
-    const body = await req.json();
-
+    const body = await request.json();
     const { email, fullName, total, services } = body;
 
     await resend.emails.send({
@@ -23,12 +22,14 @@ export default async (req, context) => {
     });
 
     return new Response(JSON.stringify({ success: true }), {
+      status: 200,
       headers: { "Content-Type": "application/json" },
     });
+
   } catch (error) {
     return new Response(JSON.stringify({ error: error.message }), {
       status: 500,
       headers: { "Content-Type": "application/json" },
     });
   }
-};
+}
